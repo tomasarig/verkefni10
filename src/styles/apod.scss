@@ -14,10 +14,12 @@
     color: #fff;
     text-align: center;
   }
-  &__image{
-    height: 36vmin;
-    width: 64vmin;
+  &__image{    
     border: none;
     border-radius:8px;
+  }
+  &__video{
+    height: 54vmin;
+    width: 96vmin;
   }
 }
