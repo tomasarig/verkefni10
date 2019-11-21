@@ -4,7 +4,6 @@
 
 // Fast sem skilgreinir heiti á lykli sem vistað er undir í localStorage
 const LOCALSTORAGE_KEY = 'favourite_spacephotos';
-
 /**
  * Sækir gögn úr localStorage. Skilað sem lista á forminu:
  * [{ type, mediaUrl, text, title },
@@ -15,9 +14,9 @@ const LOCALSTORAGE_KEY = 'favourite_spacephotos';
  * @returns {array} fylki af myndum eða tóma fylkið ef ekkert vistað.
  */
 export function load() {
-  let imagesString = window.localStorage.getItem(LOCALSTORAGE_KEY);
-  if (!imagesString){return []};
-  return JSON.parse(imagesString);  
+  const imagesString = window.localStorage.getItem(LOCALSTORAGE_KEY);
+  if (!imagesString) { return []; }
+  return JSON.parse(imagesString);
 }
 
 /**
@@ -29,7 +28,9 @@ export function load() {
  * @param {string} title titill fyrir myndina/myndbandið.
  */
 export function save(type, mediaUrl, text, title) {
-  let imageJSON = { type: type ,mediaUrl: mediaUrl, text: text,title: title};
+  const imageJSON = {
+    type, mediaUrl, text, title,
+  };
   let images = load();
   images = images.concat(imageJSON);
   window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(images));
@@ -41,4 +42,15 @@ export function save(type, mediaUrl, text, title) {
  */
 export function clear() {
   localStorage.removeItem(LOCALSTORAGE_KEY);
+}
+
+/**
+ * eyðir einni mynd úr localstorage og favorites
+ * @param {*} obj event þegar tvíklikkað á element sem á að eyða
+ */
+export function clearOne(obj) {
+  const imagesString = window.localStorage.getItem(LOCALSTORAGE_KEY);
+  const images = JSON.parse(imagesString);
+  images.splice(obj.path[1].id, 1);
+  window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(images));
 }

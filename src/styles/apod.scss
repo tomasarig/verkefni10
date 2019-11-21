@@ -14,12 +14,13 @@
     color: #fff;
     text-align: center;
   }
-  &__image{    
-    border: none;
-    border-radius:8px;
+
+  &__image {
+    border-radius: 8px;
   }
-  &__video{
-    height: 54vmin;
+
+  &__video {
     width: 96vmin;
+    height: 54vmin;
   }
 }

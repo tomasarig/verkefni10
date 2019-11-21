@@ -42,16 +42,15 @@ export function randomNumber(min, max) {
 /**
  * skilar dagsetningu af handhófi á milli dagsins í dag og 16.6.2019
  */
-export function random_date() {
-  let date1 = new Date("06/19/1995");
-  let date2 = new Date();
-  let randDate = new Date(randomNumber(date1.valueOf(), date2.valueOf()))
-  //önnur leið
-  //let days_interval = Math.floor((date2 - date1)/(1000*60*60*24));
-  //date1.setDate(date1.getDate() + Math.floor(Math.random() * days_interval));
+export function randomDate() {
+  const date1 = new Date('06/19/1995');
+  const date2 = new Date();
+  const randDate = new Date(randomNumber(date1.valueOf(), date2.valueOf()));
+  // önnur leið
+  // let days_interval = Math.floor((date2 - date1)/(1000*60*60*24));
+  // date1.setDate(date1.getDate() + Math.floor(Math.random() * days_interval));
   return randDate.toISOString().substring(0, 10);
 }
-
 
 
 /**
@@ -62,32 +61,32 @@ export function random_date() {
 /**
  * skilar iframe element með video
  */
-export function createVidEl(info) {  
-  let apodEl = document.querySelector('.apod');
-  let vidEl = apodEl.querySelector('.apod__image apod__video')
-  let vid = document.createElement('iframe');
-  let vidUrl = info.mediaUrl + '?rel=0&autoplay=0&showinfo=0&autohide=1&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&autohide=1&controls=0'
-  vid.setAttribute('class', 'apod__image');
+export function createVidEl(info) {
+  const apodEl = document.querySelector('.apod');
+  const vidEl = apodEl.querySelector('.apod__image');
+  const vid = document.createElement('iframe');
+  const vidUrl = `${info.mediaUrl}?rel=0&autoplay=0&showinfo=0&autohide=1&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&autohide=1&controls=0`;
+  vid.setAttribute('class', 'apod__image apod__video');
   vid.setAttribute('src', vidUrl);
-  apodEl.replaceChild(vid,vidEl);
-  let title = apodEl.querySelector('.apod__title');
+  apodEl.replaceChild(vid, vidEl);
+  const title = apodEl.querySelector('.apod__title');
   title.innerText = info.title;
-  let text = apodEl.querySelector('.apod__text');
+  const text = apodEl.querySelector('.apod__text');
   text.innerText = info.text;
 }
 
 /**
  * skilar img element með mynd
  */
-export function createImgEl(info){
-  let apodEl = document.querySelector('.apod');
-  let imgEL = apodEl.querySelector('.apod__image');
-  let img = document.createElement('img');
+export function createImgEl(info) {
+  const apodEl = document.querySelector('.apod');
+  const imgEL = apodEl.querySelector('.apod__image');
+  const img = document.createElement('img');
   img.setAttribute('src', info.mediaUrl);
   img.setAttribute('class', 'apod__image');
-  apodEl.replaceChild(img,imgEL);
-  let title = apodEl.querySelector('.apod__title');
+  apodEl.replaceChild(img, imgEL);
+  const title = apodEl.querySelector('.apod__title');
   title.innerText = info.title;
-  let text = apodEl.querySelector('.apod__text');
+  const text = apodEl.querySelector('.apod__text');
   text.innerText = info.text;
 }
