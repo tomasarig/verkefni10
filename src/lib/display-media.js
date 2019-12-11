@@ -89,9 +89,9 @@ export function displayFavorite(img, n) {
   }
   div.addEventListener('dblclick', clearOne, false);
 
-  /**ég set hérna loadFavourites til þess að myndir séu sýndar rétt og 
-   * þ.a.l. er hægt að eyða réttri mynd úr local storage út frá div ID 
-   * þegar tvíklikkað er á hana. veit að þetta var óþarfi en mig langaði 
+  /** ég set hérna loadFavourites til þess að myndir séu sýndar rétt og
+   * þ.a.l. er hægt að eyða réttri mynd úr local storage út frá div ID
+   * þegar tvíklikkað er á hana. veit að þetta var óþarfi en mig langaði
    */
   div.addEventListener('dblclick', loadFavourites, false);
   const title = document.createElement('h2');
